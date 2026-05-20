@@ -98,9 +98,9 @@ export const portfolioData: PortfolioData = {
   phone: '+91-9822750477',
   linkedin: 'https://linkedin.com/in/rutu-ghatge',
   github: 'https://github.com/rutu-ghatge',
-  avatarUrl: '/rutu_portrait.png',
+  avatarUrl: '/rutu_portfolio.png',
   stats: {
-    experience: '2+',
+    internshipExperience: '2+',
     projects: '20+',
     hackathons: '5',
     publications: '2',
@@ -393,10 +393,10 @@ export const portfolioData: PortfolioData = {
     },
     {
       degree: 'Higher Secondary Certificate (HSC) / Class XII (Science)',
-      college: 'Junior College (PCM & Bifocal Computer Science)',
-      university: 'Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)',
+      college: 'Loyola Junior College (PCM & Bifocal Computer Science)',
+      university: 'Maharashtra State Board Higher Secondary Education (HSE)',
       period: '2020 – 2022',
-      grade: 'Distinction / Grade A',
+      grade: 'First Class',
       details: [
         'Specialized in Physics, Chemistry, and Mathematics (PCM) with Bifocal Computer Science.',
         'Recognized as a Top Performer in Bifocal Computer Science.',
@@ -408,24 +408,28 @@ export const portfolioData: PortfolioData = {
       college: 'Modern High School, NCL Campus',
       university: 'Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)',
       period: '2010 – 2020',
-      grade: 'Board Topper · 93.40%',
+      grade: 'School Topper · 93.40%',
       details: [
-        'Graduated as Board Topper with a stellar score of 93.40% in SSC examinations.',
-        'Appointed as Head Girl of the school after serving as School Captain, leading the student council.',
+        'Graduated as School Topper with a stellar score of 93.40% in SSC examinations.',
+        'Elected as Head Girl of the school after serving as House Captain, leading the student council.',
         'Served as Right Guard in the Road Safety Patrol (RSP), coordinating student discipline and parades.',
-        'Achieved "A" Grade in both Intermediate and Elementary Drawing Grade Examinations.'
+        'Achieved "A" Grade in both Intermediate and Elementary Drawing Grade Examinations.',
+        'Participated in various inter-school competitions and cultural events.',
+        'Won multiple awards in public speaking and debate competitions.',
+        'Multiple gold/silver medals in English marathons and Olympiad exams.',
+        'Twice nominated for Charitrya Upasak Chatra Puraskar.'
       ]
     }
   ],
   certifications: [
     { title: 'Research & Development AI Intern Certificate', provider: 'DRDO', year: '2025', certImageUrl: '/certs/drdo_cert.jpg', badgeUrl: '/certs/drdo_lor.pdf' },
+    { title: 'Mobile Virtual Reality and Artificial Intelligence (Elite + Silver)', provider: 'NPTEL', year: '2024', certImageUrl: '/certs/Mobile Virtual Reality and Artificial Intelligence.jpg' },
+    { title: 'Finlatics Business Analyst Experience Program', provider: 'Finlatics', year: '2024', certImageUrl: '/certs/finlatics business analyst.jpg' },
     { title: 'Advanced AI & Deep Learning Specialization', provider: 'Udemy', year: '2024', certImageUrl: '/certs/udemy_cert.jpg', badgeUrl: '/certs/udemy_cert.pdf' },
     { title: 'Google AI Essentials', provider: 'Google', year: '2024', certImageUrl: '/certs/google ai essentials.pdf' },
     { title: 'Introduction to Generative AI Studio', provider: 'Google', year: '2024', certImageUrl: '/certs/google cloud intro to generative ai studio.pdf' },
     { title: 'SQL and Relational Databases', provider: 'IBM', year: '2024', certImageUrl: '/certs/sql and relational databases 101.jpg' },
     { title: 'Foundations of Cybersecurity', provider: 'Google', year: '2024', certImageUrl: '/certs/Google cybebrsecurity foundation.jpg' },
-    { title: 'Mobile Virtual Reality and Artificial Intelligence (Elite + Silver)', provider: 'NPTEL', year: '2024', certImageUrl: '/certs/Mobile Virtual Reality and Artificial Intelligence.jpg' },
-    { title: 'Finlatics Business Analyst Experience Program', provider: 'Finlatics', year: '2024', certImageUrl: '/certs/finlatics business analyst.jpg' },
     { title: 'Python for Machine Learning', provider: 'Indeed Inspiring Infotech', year: '2024', certImageUrl: '/certs/python for ml.jpg' },
     { title: 'Generative AI Add-on Specialization', provider: 'Indeed Inspiring Infotech', year: '2024', certImageUrl: '/certs/Gen AI Add on cousre Indeed Inspiring Infotech.jpg' },
     { title: 'Internet of Things Specialization', provider: 'UC San Diego', year: '2024', certImageUrl: '/certs/uc san diego iot.jpg' }

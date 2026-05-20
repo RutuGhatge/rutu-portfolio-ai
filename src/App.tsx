@@ -176,19 +176,7 @@ export default function App() {
               <h1 className="hero-name">
                 Rutu<br/><span>Ghatge</span>
               </h1>
-              <p className="hero-role">{portfolioData.role}</p>
-              <p className="hero-desc">{portfolioData.tagline}</p>
-              <div className="hero-btns">
-                <a href="#contact" className="btn-primary">Get in touch <ArrowRight size={16} /></a>
-                <a 
-                  href={portfolioData.linkedin} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="btn-secondary"
-                >
-                  LinkedIn <ExternalLink size={14} />
-                </a>
-              </div>
+              
               
               <div className="hero-stats">
                 <div className="stat-item">

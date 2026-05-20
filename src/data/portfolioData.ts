@@ -107,11 +107,11 @@ export const portfolioData: PortfolioData = {
     certificates: '40+'
   },
   about: {
-    p1: "I'm Rutu — a BE (AI&DS with DS Hons) student and developer who builds things that actually work. Currently in my final year of B.E. in Artificial Intelligence & Data Science with Data Science Honors at ISBM College of Engineering, SPPU (CGPA 8.88).",
-    p2: "My work spans LLM-powered backend systems, real-time computer vision, RAG architectures, and multi-agent AI — with production deployments at an AI startup and defense-grade systems at ARDE DRDO.",
-    p3: "I'm deeply curious about the intersection of applied AI and real-world impact, whether that's personalizing skincare recommendations, detecting aerial drones, or building agentic fintech tools.",
-    p4: "Outside code, I serve as the IoT Club Coordinator, TnP Cell member, intercollegiate debate champion, and an Infosys Pragati mentee.",
-    highlights: [
+   p1:"I am a passionate AI and technology enthusiast driven by curiosity, creativity, and the desire to build meaningful solutions. With interests spanning Artificial Intelligence, Machine Learning, NLP, IoT, and Generative AI, I enjoy transforming ideas into impactful, real-world applications through hands-on development and continuous learning.",
+   p2:"From building intelligent systems and conversational AI to exploring cybersecurity and emerging technologies, I thrive at the intersection of innovation and problem-solving. I believe technology is most powerful when it creates meaningful experiences and solves real challenges.",
+   p3:"Beyond technology, I am an avid reader and proud bibliophile who finds inspiration in stories, ideas, and perspectives. I enjoy reading across genres, writing fiction and poetry, and exploring creativity through words—interests that nurture both my imagination and analytical thinking.",
+   p4:"I believe in lifelong learning, thoughtful innovation, and constantly evolving into a better creator, thinker, and problem solver.",
+   highlights: [
       { icon: '🧠', title: 'LLM & Agentic AI', desc: 'LangChain, LangGraph, RAG, multi-agent orchestration, Gemini Pro' },
       { icon: '👁', title: 'Computer Vision', desc: 'YOLO, DeepSORT, Kalman Filters, CNN, OpenCV, aerial detection' },
       { icon: '⚙️', title: 'Full-Stack AI Systems', desc: 'FastAPI, React, MongoDB, Docker, real-time deployment pipelines' },

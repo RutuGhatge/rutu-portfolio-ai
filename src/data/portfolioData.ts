@@ -382,7 +382,7 @@ export const portfolioData: PortfolioData = {
       degree: 'B.E. in Artificial Intelligence & Data Science (DS Honours)',
       college: 'ISBM College of Engineering, Pune',
       university: 'Savitribai Phule Pune University (SPPU)',
-      period: '2022 – 2026',
+      period: '2022 - 2026',
       grade: '8.88 CGPA',
       details: [
         'Coordinator of the IoT Club, leading hands-on workshops and technical projects.',
@@ -395,7 +395,7 @@ export const portfolioData: PortfolioData = {
       degree: 'Higher Secondary Certificate (HSC) / Class XII (Science)',
       college: 'Loyola Junior College (PCM & Bifocal Computer Science)',
       university: 'Maharashtra State Board Higher Secondary Education (HSE)',
-      period: '2020 – 2022',
+      period: '2020 - 2022',
       grade: 'First Class',
       details: [
         'Specialized in Physics, Chemistry, and Mathematics (PCM) with Bifocal Computer Science.',
@@ -407,7 +407,7 @@ export const portfolioData: PortfolioData = {
       degree: 'Secondary School Certificate (SSC) / Class X',
       college: 'Modern High School, NCL Campus',
       university: 'Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)',
-      period: '2010 – 2020',
+      period: '2010 - 2020',
       grade: 'School Topper · 93.40%',
       details: [
         'Graduated as School Topper with a stellar score of 93.40% in SSC examinations.',

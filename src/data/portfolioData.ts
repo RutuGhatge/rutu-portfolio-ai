@@ -67,7 +67,7 @@ export interface PortfolioData {
   github: string;
   avatarUrl: string;
   stats: {
-    experience: string;
+    internshipExperience: string;
     projects: string;
     hackathons: string;
     publications: string;

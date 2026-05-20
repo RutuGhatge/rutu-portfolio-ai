@@ -176,11 +176,13 @@ export default function App() {
               <h1 className="hero-name">
                 Rutu<br/><span>Ghatge</span>
               </h1>
+              <p className="hero-role">{portfolioData.role}</p>
+              <p className="hero-desc">{portfolioData.tagline}</p>
               
               
               <div className="hero-stats">
                 <div className="stat-item">
-                  <span className="stat-num">{portfolioData.stats.experience}</span>
+                  <span className="stat-num">{portfolioData.stats.internshipExperience}</span>
                   <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="stat-item">

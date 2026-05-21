@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  MessageSquare, 
   X, 
   Send, 
   Settings, 
@@ -33,6 +32,23 @@ export default function Chatbot() {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
+
+  const [calloutIndex, setCalloutIndex] = useState(0);
+  const calloutPhrases = [
+    "Let's talk! ⚡🤖",
+    "Ask me anything! ✨",
+    "I'm online! 💬",
+    "Say hello! 💕",
+    "Need a resume? 📄",
+  ];
+
+  useEffect(() => {
+    if (isOpen) return;
+    const interval = setInterval(() => {
+      setCalloutIndex((prev) => (prev + 1) % calloutPhrases.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isOpen, calloutPhrases.length]);
 
   // Settings Panel State
   const [apiMode, setApiMode] = useState<'local' | 'gemini' | 'proxy'>('local');
@@ -305,15 +321,66 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* Floating Chat Trigger Button */}
-      <button 
-        className="chat-btn" 
-        onClick={() => setIsOpen(!isOpen)}
-        title="Chat with RuBot"
-        aria-label="Toggle RuBot Chat"
-      >
-        {isOpen ? <X size={24} color="#000" /> : <MessageSquare size={24} color="#000" />}
-      </button>
+      {/* Floating Chat Trigger Button Container */}
+      <div className={`chat-btn-container ${isOpen ? 'active' : ''}`}>
+        {/* Sonar Glow Pulse Waves */}
+        <div className="chat-sonar-wave"></div>
+        <div className="chat-sonar-wave delay-1"></div>
+
+        {/* Cute Speech Bubble Callout */}
+        <div className="chat-bubble-callout">
+          <span key={calloutIndex} className="callout-text-animate">{calloutPhrases[calloutIndex]}</span>
+          <div className="callout-arrow"></div>
+        </div>
+
+        <button 
+          className="chat-btn cute-bot-trigger" 
+          onClick={() => setIsOpen(!isOpen)}
+          title="Chat with RuBot"
+          aria-label="Toggle RuBot Chat"
+        >
+          {isOpen ? (
+            <div className="close-icon-wrapper">
+              <X size={20} color="#000" strokeWidth={2.5} />
+            </div>
+          ) : (
+            <div className="cute-bot-mascot">
+              {/* Orbiting Sparkles */}
+              <div className="chat-orbit-sparkle s1">✨</div>
+              <div className="chat-orbit-sparkle s2">⭐</div>
+              <div className="chat-orbit-sparkle s3">✨</div>
+
+              {/* Antenna */}
+              <div className="bot-antenna">
+                <div className="antenna-ball"></div>
+                <span className="antenna-sparkle">💖</span>
+              </div>
+              {/* Head */}
+              <div className="bot-face">
+                {/* Headphones Band */}
+                <div className="bot-headband"></div>
+                {/* Ears / Headphone cups */}
+                <div className="bot-ear left"></div>
+                <div className="bot-ear right"></div>
+                {/* Blushing cheeks */}
+                <div className="bot-cheek left"></div>
+                <div className="bot-cheek right"></div>
+                {/* Eyes */}
+                <div className="bot-eyes">
+                  <div className="bot-eye left-eye"></div>
+                  <div className="bot-eye right-eye"></div>
+                </div>
+                {/* Cute smile */}
+                <div className="bot-mouth"></div>
+                {/* Tiny hands */}
+                <div className="bot-hand left"></div>
+                <div className="bot-hand right"></div>
+              </div>
+            </div>
+          )}
+        </button>
+      </div>
+
 
       {/* Chat Window Drawer */}
       <div className={`chat-window glass-panel ${isOpen ? '' : 'hidden'}`}>

@@ -3,7 +3,6 @@ import { portfolioData } from './data/portfolioData';
 import Chatbot from './components/Chatbot';
 import infosysCerts from './data/infosys_certs.json';
 import { 
-  ArrowRight, 
   Mail, 
   Phone, 
   Linkedin, 
@@ -12,12 +11,16 @@ import {
   Award,
   ChevronDown,
   ChevronUp,
-  FileText
+  FileText,
+  Menu,
+  X,
+  Sparkles
 } from 'lucide-react';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [navScrolled, setNavScrolled] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const [projectFilter, setProjectFilter] = useState<string>('All');
   const [selectedCert, setSelectedCert] = useState<any | null>(null);
   const [showAllInfosys, setShowAllInfosys] = useState(false);
@@ -98,31 +101,41 @@ export default function App() {
 
   const categories = ['All', 'LLMs & Agents', 'Computer Vision', 'Full-Stack AI', 'IoT & Robotics'];
 
-  // Generate a set of background magic stars with distributed horizontal positions
-  const magicStars = Array.from({ length: 16 }, (_, i) => ({
-    id: i,
-    left: `${(i * 6) + Math.random() * 4}%`,
-    delay: `${Math.random() * 15}s`,
-    duration: `${20 + Math.random() * 15}s`,
-    isPurple: i % 2 === 0
-  }));
+  // Generate a set of background magic particles with randomized characteristics
+  const magicParticles = Array.from({ length: 32 }, (_, i) => {
+    const types = ['star', 'bubble', 'pulse'];
+    const type = types[i % 3];
+    return {
+      id: i,
+      left: `${(i * 3) + Math.random() * 3}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 12}s`,
+      duration: type === 'bubble' ? `${25 + Math.random() * 20}s` : `${15 + Math.random() * 15}s`,
+      scale: 0.4 + Math.random() * 0.8,
+      type,
+      isPurple: i % 2 === 0
+    };
+  });
 
   return (
     <div className="portfolio-app">
-      {/* Dynamic Background Magic Stars */}
+      {/* Dynamic Background Magic Particles */}
       <div className="magic-stars-container">
-        {magicStars.map(star => (
+        {magicParticles.map(p => (
           <div 
-            key={star.id} 
-            className={`magic-star ${star.isPurple ? 'purple' : ''}`}
+            key={p.id} 
+            className={`magic-particle particle-${p.type} ${p.isPurple ? 'purple' : ''}`}
             style={{
-              left: star.left,
-              animationDelay: star.delay,
-              animationDuration: star.duration
+              left: p.left,
+              top: p.top,
+              transform: `scale(${p.scale})`,
+              animationDelay: p.delay,
+              animationDuration: p.duration
             }}
           />
         ))}
       </div>
+
 
       {/* Decorative Grids and Blobs */}
       <div className="grid-overlay"></div>
@@ -131,85 +144,126 @@ export default function App() {
 
       {/* Navigation */}
       <nav className={navScrolled ? 'scrolled' : ''}>
-        <a href="#home" className="nav-logo">
-          RG <span>AI Engineer</span>
-        </a>
-        <ul className="nav-links">
-          {['About', 'Skills', 'Experience', 'Education', 'Projects', 'Research', 'Certifications', 'Contact'].map((sec) => {
-            const id = sec.toLowerCase();
-            return (
-              <li key={id}>
-                <a 
-                  href={`#${id}`} 
-                  className={activeSection === id ? 'active' : ''}
-                >
-                  {sec}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="nav-cta-group">
-          <a 
-            href={portfolioData.linkedin} 
-            target="_blank" 
-            rel="noreferrer" 
-            className="nav-cta-linkedin"
-            title="LinkedIn Profile"
+        <div className="nav-inner">
+          <a href="#home" className="nav-logo" aria-label="Home">
+            <Sparkles size={20} className="nav-logo-icon" />
+          </a>
+          <button
+            className="nav-hamburger"
+            onClick={() => setNavOpen(o => !o)}
+            aria-label="Toggle navigation"
           >
-            <Linkedin size={14} />
-            <span>LinkedIn</span>
-          </a>
-          <a href={`mailto:${portfolioData.email}`} className="nav-cta">
-            <Mail size={13} style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }} />
-            <span>{portfolioData.email}</span>
-          </a>
+            {navOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+          <ul className={`nav-links${navOpen ? ' open' : ''}`}>
+            {['About', 'Skills', 'Experience', 'Education', 'Projects', 'Research', 'Certifications', 'Contact'].map((sec) => {
+              const id = sec.toLowerCase();
+              return (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    className={activeSection === id ? 'active' : ''}
+                    onClick={() => setNavOpen(false)}
+                  >
+                    {sec}
+                  </a>
+                </li>
+              );
+            })}
+            {/* Mobile-only menu contact actions */}
+            <li className="nav-mobile-cta-item">
+              <div className="nav-mobile-cta-wrapper">
+                <a
+                  href={portfolioData.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="nav-cta-linkedin"
+                  onClick={() => setNavOpen(false)}
+                  title="LinkedIn Profile"
+                >
+                  <Linkedin size={14} />
+                  <span>LinkedIn</span>
+                </a>
+                <a 
+                  href={`mailto:${portfolioData.email}`} 
+                  className="nav-cta"
+                  onClick={() => setNavOpen(false)}
+                  title="Email Me"
+                >
+                  <Mail size={13} style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }} />
+                  <span>Email</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+          
+          {/* Desktop-only action items */}
+          <div className="nav-cta-group desktop-only">
+            <a
+              href={portfolioData.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="nav-cta-linkedin"
+              title="LinkedIn Profile"
+            >
+              <Linkedin size={14} />
+              <span>LinkedIn</span>
+            </a>
+            <a href={`mailto:${portfolioData.email}`} className="nav-cta">
+              <Mail size={13} style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }} />
+              <span>{portfolioData.email}</span>
+            </a>
+          </div>
         </div>
-
       </nav>
 
       {/* Hero Section */}
       <section className="hero" id="home">
+        {/* Animated Background Blobs */}
+        <div className="hero-glow-blob blob-sky"></div>
+        <div className="hero-glow-blob blob-baby"></div>
+        <div className="hero-glow-blob blob-indigo-soft"></div>
+
         <div className="section-inner">
           <div className="hero-grid-split">
+
+            {/* LEFT — text & CTAs */}
             <div className="hero-content">
               <h1 className="hero-name">
                 Rutu<br/><span>Ghatge</span>
               </h1>
               <p className="hero-role">{portfolioData.role}</p>
               <p className="hero-desc">{portfolioData.tagline}</p>
-              
-              
-              <div className="hero-stats">
-                <div className="stat-item">
-                  <span className="stat-num">{portfolioData.stats.internshipExperience}</span>
-                  <span className="stat-label">Years Experience</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-num">{portfolioData.stats.projects}</span>
-                  <span className="stat-label">Projects Built</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-num">{portfolioData.stats.certificates}</span>
-                  <span className="stat-label">Certifications</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-num">{portfolioData.stats.hackathons}</span>
-                  <span className="stat-label">Hackathon Wins</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-num">{portfolioData.stats.publications}</span>
-                  <span className="stat-label">Publications</span>
-                </div>
+            </div>
+
+            {/* RIGHT — stat showcase cards */}
+            <div className="hero-stats-panel">
+              <div className="hero-stat-card">
+                <span className="stat-num">{portfolioData.stats.internshipExperience}</span>
+                <span className="stat-label">Experience (Internship)</span>
+              </div>
+              <div className="hero-stat-card">
+                <span className="stat-num">{portfolioData.stats.projects}</span>
+                <span className="stat-label">Projects Built</span>
+              </div>
+              <div className="hero-stat-card">
+                <span className="stat-num">{portfolioData.stats.certificates}</span>
+                <span className="stat-label">Certifications</span>
+              </div>
+              <div className="hero-stat-card">
+                <span className="stat-num">{portfolioData.stats.hackathons}</span>
+                <span className="stat-label">Hackathon Wins</span>
+              </div>
+              <div className="hero-stat-card">
+                <span className="stat-num">{portfolioData.stats.publications}</span>
+                <span className="stat-label">Publications</span>
+              </div>
+              <div className="hero-stat-card">
+                <span className="stat-num">6+</span>
+                <span className="stat-label">Years Coding</span>
               </div>
             </div>
 
-            <div className="hero-portrait-container">
-              <div className="hero-portrait-frame">
-                <div className="portrait-glow-back"></div>
-                <img src={portfolioData.avatarUrl} alt={`${portfolioData.name} Portrait`} />
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -252,7 +306,7 @@ export default function App() {
           </div>
           <div className="skills-grid-advanced">
             {portfolioData.skills.map((group, index) => (
-              <div key={index} className="skill-matrix-card">
+              <div key={index} className="skill-matrix-card glass-panel">
                 <div className="skill-matrix-info">
                   <span className="skill-matrix-rating">{group.rating}</span>
                   <h3 className="skill-matrix-title">{group.category}</h3>
@@ -438,7 +492,7 @@ export default function App() {
               return (
                 <div 
                   key={index} 
-                  className={`cert-visual-card ${providerClass} ${cert.certImageUrl ? 'has-preview' : ''}`}
+                  className={`cert-visual-card glass-panel ${providerClass} ${cert.certImageUrl ? 'has-preview' : ''}`}
                   onClick={() => cert.certImageUrl && setSelectedCert(cert)}
                   style={cert.certImageUrl ? { cursor: 'pointer' } : undefined}
                 >
@@ -583,163 +637,71 @@ export default function App() {
         </div>
       </section>
 
+
       {/* Contact Section */}
       <section id="contact">
         <div className="section-inner">
-          <div className="section-header">
-            <div className="section-eyebrow">// 09 — contact</div>
-            <h2 className="section-title">Let's connect</h2>
-          </div>
-          
-          <div className="contact-grid">
-            <div>
-              <p className="contact-info">
-                Open to full-time AI/ML engineering roles, research collaborations, and interesting project conversations. Based in Pune — available on-site or remote.
-              </p>
-              <div className="contact-links">
-                <a href={`mailto:${portfolioData.email}`} className="contact-link glass-panel">
-                  <div className="contact-link-icon">
-                    <Mail size={18} />
-                  </div>
-                  <div className="contact-link-info">
-                    <span>Email Me</span>
-                    <strong>{portfolioData.email}</strong>
-                  </div>
-                </a>
-                <a href={`tel:${portfolioData.phone.replace(/[-]/g, '')}`} className="contact-link glass-panel">
-                  <div className="contact-link-icon">
-                    <Phone size={18} />
-                  </div>
-                  <div className="contact-link-info">
-                    <span>Call Me</span>
-                    <strong>{portfolioData.phone}</strong>
-                  </div>
-                </a>
-                <a href={portfolioData.linkedin} target="_blank" rel="noreferrer" className="contact-link glass-panel">
-                  <div className="contact-link-icon">
-                    <Linkedin size={18} />
-                  </div>
-                  <div className="contact-link-info">
-                    <span>LinkedIn</span>
-                    <strong>linkedin.com/in/rutu-ghatge</strong>
-                  </div>
-                </a>
-                <a href={portfolioData.github} target="_blank" rel="noreferrer" className="contact-link glass-panel">
-                  <div className="contact-link-icon">
-                    <Github size={18} />
-                  </div>
-                  <div className="contact-link-info">
-                    <span>GitHub</span>
-                    <strong>github.com/rutu-ghatge</strong>
-                  </div>
-                </a>
-              </div>
+          <div className="contact-minimal-container">
+            <div className="section-header" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <div className="section-eyebrow" style={{ justifyContent: 'center' }}>// 09 — contact</div>
+              <h2 className="section-title">Let's Connect</h2>
             </div>
             
-            <div className="glass-panel" style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              <div className="section-eyebrow" style={{ marginBottom: '0.2rem', display: 'flex', border: 'none', padding: 0 }}>
-                // Quick Message
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 600 }}>Send an Instant Ping</h3>
+            <div className="contact-minimal-card glass-panel">
+              <p className="contact-minimal-subtitle">
+                Open to full-time AI/ML engineering roles, research collaborations, and interesting project conversations.
+              </p>
               
-              <form 
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Thanks for reaching out! Since this is a static site, please use email (ghatgerutu@gmail.com) or click one of the social links. You can also chat with the AI assistant below!");
-                }}
-                style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-              >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--purple)', textTransform: 'uppercase' }}>
-                    Your Name
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="John Doe" 
-                    required
-                    style={{
-                      background: 'var(--bg4)',
-                      border: '1px solid var(--border)',
-                      color: 'var(--text)',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.85rem',
-                      fontFamily: 'var(--font-body)',
-                      transition: 'var(--transition)'
-                    }} 
-                  />
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--purple)', textTransform: 'uppercase' }}>
-                    Email Address
-                  </label>
-                  <input 
-                    type="email" 
-                    placeholder="john@example.com" 
-                    required
-                    style={{
-                      background: 'var(--bg4)',
-                      border: '1px solid var(--border)',
-                      color: 'var(--text)',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.85rem',
-                      fontFamily: 'var(--font-body)',
-                      transition: 'var(--transition)'
-                    }} 
-                  />
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--purple)', textTransform: 'uppercase' }}>
-                    Message
-                  </label>
-                  <textarea 
-                    placeholder="Let's build something amazing together..." 
-                    rows={4}
-                    required
-                    style={{
-                      background: 'var(--bg4)',
-                      border: '1px solid var(--border)',
-                      color: 'var(--text)',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.85rem',
-                      fontFamily: 'var(--font-body)',
-                      transition: 'var(--transition)',
-                      resize: 'none'
-                    }} 
-                  />
-                </div>
-
-                <button 
-                  type="submit" 
-                  style={{
-                    background: 'var(--teal)',
-                    color: '#000',
-                    border: 'none',
-                    padding: '0.85rem',
-                    borderRadius: '8px',
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: 700,
-                    fontSize: '0.9rem',
-                    cursor: 'pointer',
-                    transition: 'var(--transition)',
-                    marginTop: '0.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    boxShadow: '0 4px 12px rgba(var(--teal-rgb), 0.15)'
-                  }}
+              <div className="contact-action-row">
+                <a 
+                  href="/Rutu_Ghatge_Resume.pdf" 
+                  download="Rutu_Ghatge_Resume.pdf" 
+                  className="cv-download-btn"
+                  title="Download CV / Resume"
                 >
-                  Send Message <ArrowRight size={16} />
-                </button>
-              </form>
+                  <FileText size={18} />
+                  <span>Download CV / Resume</span>
+                </a>
+              </div>
+              
+              <div className="social-minimal-row">
+                <a 
+                  href={`mailto:${portfolioData.email}`} 
+                  className="social-minimal-pill" 
+                  title="Email Me"
+                >
+                  <Mail size={20} />
+                  <span className="tooltip-text">Email Me</span>
+                </a>
+                <a 
+                  href={`tel:${portfolioData.phone.replace(/[-]/g, '')}`} 
+                  className="social-minimal-pill" 
+                  title="Call Me"
+                >
+                  <Phone size={20} />
+                  <span className="tooltip-text">Call Me</span>
+                </a>
+                <a 
+                  href={portfolioData.linkedin} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="social-minimal-pill" 
+                  title="LinkedIn"
+                >
+                  <Linkedin size={20} />
+                  <span className="tooltip-text">LinkedIn</span>
+                </a>
+                <a 
+                  href={portfolioData.github} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="social-minimal-pill" 
+                  title="GitHub"
+                >
+                  <Github size={20} />
+                  <span className="tooltip-text">GitHub</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -748,9 +710,6 @@ export default function App() {
       {/* Footer */}
       <footer>
         <span className="footer-copy">© 2025 {portfolioData.name} · Pune, India</span>
-        <span className="footer-made">
-          Built with <span>🤍</span> &amp; AI
-        </span>
       </footer>
 
       {/* Premium Lightbox Modal for Certificate Previews */}

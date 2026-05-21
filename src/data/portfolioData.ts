@@ -102,7 +102,7 @@ export const portfolioData: PortfolioData = {
   stats: {
     internshipExperience: '2+',
     projects: '20+',
-    hackathons: '5',
+    hackathons: '6',
     publications: '2',
     certificates: '40+'
   },
@@ -294,7 +294,7 @@ export const portfolioData: PortfolioData = {
       category: 'Full-Stack AI'
     },
     {
-      id: '11',
+      id: '11-drdo',
       num: '11',
       name: '4 Live Defense Projects at ARDE DRDO',
       desc: 'Four live secure R&D systems developed in a zero-connectivity lab at ARDE DRDO. Included CNN aerial object detection with GELAN activation, hybrid Kalman Filter + LSTM drone tracking (99%+ accuracy), and Edge AI model optimization for offline deployment.',
@@ -366,10 +366,12 @@ export const portfolioData: PortfolioData = {
     }
   ],
   achievements: [
+    { icon: '📜', title: 'ARDE DRDO Letter of Recommendation', subtitle: 'Awarded by Senior Scientist & Guide for outstanding defense R&D' },
     { icon: '🥇', title: '1st Place — DATAthon', subtitle: 'ISBM College of Engineering' },
     { icon: '🥇', title: '1st Place — State Hackathon', subtitle: 'Ajeenkya DY Patil University, Pune' },
     { icon: '🥇', title: '1st — Project Competition', subtitle: 'ISB&M Bangalore' },
     { icon: '🥇', title: '1st — Idea Hackathon', subtitle: 'ISBM Kolkata' },
+    { icon: '🥉', title: '3rd Place — Internal Smart India Hackathon', subtitle: 'College Selection Round for SIH' },
     { icon: '🥈', title: '1st Runner-Up — War of Words', subtitle: 'Crescendo\'26 Debate' },
     { icon: '🎖', title: 'Top 5% · Elite + Silver Medal', subtitle: 'NPTEL Mobile VR & AI' },
     { icon: '🥉', title: 'Second Runner-Up — EDAthon', subtitle: 'Ajinkya DY Patil' },

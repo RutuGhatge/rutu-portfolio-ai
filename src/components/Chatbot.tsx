@@ -314,12 +314,14 @@ export default function Chatbot() {
       
       setMessages(prev => [...prev, { role: 'bot', text: reply }]);
     } catch (error) {
-      console.error(error);
+      console.error("RuBot Live API Connection Failed, falling back to local responder:", error);
+      // Fallback seamlessly without a scary error message
+      const fallbackReply = getLocalResponse(query);
       setMessages(prev => [
-        ...prev, 
-        { 
-          role: 'bot', 
-          text: "⚠️ **Connection Error!** Could not fetch live response. Please check your settings/keys, or fall back to **Local RAG Mode**.\n\n*Local Answer:* " + getLocalResponse(query)
+        ...prev,
+        {
+          role: 'bot',
+          text: fallbackReply
         }
       ]);
     } finally {

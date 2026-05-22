@@ -51,9 +51,9 @@ export default function Chatbot() {
   }, [isOpen, calloutPhrases.length]);
 
   // Settings Panel State
-  const [apiMode, setApiMode] = useState<'local' | 'gemini' | 'proxy'>('local');
+  const [apiMode, setApiMode] = useState<'local' | 'gemini' | 'proxy'>('proxy');
   const [apiKey, setApiKey] = useState('');
-  const [proxyUrl, setProxyUrl] = useState('http://localhost:5000/api/chat');
+  const [proxyUrl, setProxyUrl] = useState('/api/chat');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 

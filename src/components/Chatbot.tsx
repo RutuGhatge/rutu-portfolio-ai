@@ -63,7 +63,13 @@ export default function Chatbot() {
     const savedKey = localStorage.getItem('rutu_chat_key');
     const savedProxy = localStorage.getItem('rutu_chat_proxy');
 
-    if (savedMode) setApiMode(savedMode as any);
+    // Force default to Vercel Serverless proxy mode for old visitors who previously cached the local fallback
+    if (savedMode && savedMode !== 'local') {
+      setApiMode(savedMode as any);
+    } else {
+      setApiMode('proxy');
+    }
+    
     if (savedKey) setApiKey(savedKey);
     if (savedProxy) setProxyUrl(savedProxy);
   }, []);
@@ -86,8 +92,8 @@ export default function Chatbot() {
       {
         role: 'bot',
         text: `🔧 Chatbot updated to **${
-          apiMode === 'local' ? 'Local RAG Mode' : 
-          apiMode === 'gemini' ? 'Gemini AI Mode (Direct)' : 'Local Proxy Server Mode'
+          apiMode === 'local' ? 'Local Keyword Matching' : 
+          apiMode === 'gemini' ? 'Gemini AI Mode (Direct)' : 'Vercel Serverless AI'
         }** successfully!`
       }
     ]);
@@ -390,7 +396,7 @@ export default function Chatbot() {
           <div className="chat-avatar">R</div>
           <div className="chat-header-info">
             <h4>RuBot</h4>
-            <p>● online · {apiMode === 'local' ? 'Local RAG' : apiMode === 'gemini' ? 'Live Gemini AI' : 'Proxy Mode'}</p>
+            <p>● online · {apiMode === 'local' ? 'Offline Mode' : apiMode === 'gemini' ? 'Live Gemini AI' : 'Serverless AI'}</p>
           </div>
           
           <div className="chat-actions">
@@ -426,9 +432,9 @@ export default function Chatbot() {
               value={apiMode}
               onChange={(e) => setApiMode(e.target.value as any)}
             >
-              <option value="local">Local RAG matching (Offline/Fast)</option>
+              <option value="proxy">Vercel Serverless AI (Recommended)</option>
+              <option value="local">Local keyword matching (Offline fallback)</option>
               <option value="gemini">Google Gemini API (Direct &amp; Live)</option>
-              <option value="proxy">Local Node Proxy Server (CORS Safe)</option>
             </select>
           </div>
 
@@ -457,7 +463,7 @@ export default function Chatbot() {
             <div className="settings-group">
               <label className="settings-label">
                 <Server size={12} style={{ marginRight: 4 }} />
-                Proxy Endpoint URL
+                Serverless API Endpoint
               </label>
               <input 
                 type="text" 
@@ -465,6 +471,9 @@ export default function Chatbot() {
                 value={proxyUrl}
                 onChange={(e) => setProxyUrl(e.target.value)}
               />
+              <p className="settings-desc" style={{ marginTop: 2, fontSize: '0.72rem' }}>
+                Secure, zero-maintenance proxy hosted on Vercel under `/api/chat`.
+              </p>
             </div>
           )}
 

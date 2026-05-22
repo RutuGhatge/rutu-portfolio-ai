@@ -44,6 +44,7 @@ export default async function handler(req, res) {
 
     Name: Rutu Mahesh Ghatge
     Role: BE (AI&DS with Data Science Honours) — Final Year at ISBM College of Engineering, Savitribai Phule Pune University (SPPU), CGPA 8.88
+    Date of Birth: March 10, 2004 (10/03/2004)
     Email: ghatgerutu@gmail.com
     Phone: +91-9822750477
     Location: Pune, India

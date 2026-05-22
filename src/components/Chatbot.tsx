@@ -99,11 +99,15 @@ export default function Chatbot() {
     ]);
   };
 
-  // Standard Local Response Matcher (Zero-Setup RAG fallback)
-  const getLocalResponse = (query: string): string => {
-    const q = query.toLowerCase();
-    
-    if (q.includes('project') || q.includes('build') || q.includes('portfolio')) {
+    // Standard Local Response Matcher (Zero-Setup RAG fallback)
+    const getLocalResponse = (query: string): string => {
+      const q = query.toLowerCase();
+      
+      if (q.includes('age') || q.includes('dob') || q.includes('birth') || q.includes('born')) {
+        return `Rutu was born on **March 10, 2004** (10/03/2004) and is currently 22 years old!`;
+      }
+      
+      if (q.includes('project') || q.includes('build') || q.includes('portfolio')) {
       const projs = portfolioData.projects.map(p => `• **${p.name}** (${p.category}): ${p.desc}`).join('\n');
       return `Here are some of the key projects Rutu has engineered:\n\n${projs}\n\nWhich of these would you like to know more about?`;
     }
@@ -176,6 +180,7 @@ export default function Chatbot() {
 
     Name: Rutu Mahesh Ghatge
     Role: BE (AI&DS with Data Science Honours) — Final Year at ISBM College of Engineering, Savitribai Phule Pune University (SPPU), CGPA 8.88
+    Date of Birth: March 10, 2004 (10/03/2004)
     Email: ghatgerutu@gmail.com
     Phone: +91-9822750477
     Location: Pune, India

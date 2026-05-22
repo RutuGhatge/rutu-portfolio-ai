@@ -17,7 +17,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { message, history } = req.body;
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch (e) {
+      console.error("Failed to parse body string:", e);
+    }
+  }
+  const { message, history } = body || {};
   const geminiKey = process.env.GEMINI_API_KEY;
 
   if (!message) {

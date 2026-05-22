@@ -80,8 +80,6 @@ export default async function handler(req, res) {
 
     Answer concisely. Be conversational and warm. Always guide users to email ghatgerutu@gmail.com or check her LinkedIn.`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`;
-
     // Map history to Gemini content parts
     const contents = history ? history.map((msg) => ({
       role: msg.role === 'user' ? 'user' : 'model',
@@ -94,31 +92,58 @@ export default async function handler(req, res) {
       parts: [{ text: message }]
     });
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        contents: contents,
-        systemInstruction: {
-          parts: [{ text: sysInstruction }]
-        },
-        generationConfig: {
-          maxOutputTokens: 500,
-          temperature: 0.7
-        }
-      })
-    });
+    // Define fallback models to try in case of 503 "High Demand" or rate limits
+    const modelsToTry = [
+      'gemini-3.5-flash',
+      'gemini-2.5-flash',
+      'gemini-3.1-flash-lite'
+    ];
 
-    if (!response.ok) {
-      const errText = await response.text();
-      console.error("Gemini API Error details:", errText);
-      return res.status(502).json({ error: "Failed to communicate with Gemini API" });
+    let replyText = null;
+    let lastError = null;
+
+    for (const model of modelsToTry) {
+      try {
+        console.log(`[RuBot] Attempting chat with model: ${model}`);
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            contents: contents,
+            systemInstruction: {
+              parts: [{ text: sysInstruction }]
+            },
+            generationConfig: {
+              maxOutputTokens: 500,
+              temperature: 0.7
+            }
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          replyText = data.candidates[0].content.parts[0].text;
+          console.log(`[RuBot] Chat successful using model: ${model}`);
+          break; // Exit loop on success
+        } else {
+          const errText = await response.text();
+          console.warn(`[RuBot] Model ${model} failed with status ${response.status}:`, errText);
+          lastError = new Error(`Model ${model} returned ${response.status}: ${errText}`);
+        }
+      } catch (err) {
+        console.warn(`[RuBot] Model ${model} threw an exception:`, err);
+        lastError = err;
+      }
     }
 
-    const data = await response.json();
-    const replyText = data.candidates[0].content.parts[0].text;
+    if (!replyText) {
+      console.error("[RuBot] All failover models failed. Last error:", lastError);
+      return res.status(502).json({ error: "Failed to communicate with Gemini API across all active models." });
+    }
 
     return res.status(200).json({ reply: replyText });
 

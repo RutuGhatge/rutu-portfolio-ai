@@ -107,6 +107,10 @@ export default function Chatbot() {
         return `Rutu was born on **March 10, 2004** (10/03/2004) and is currently 22 years old!`;
       }
       
+      if (q.includes('hobby') || q.includes('hobbies') || q.includes('read') || q.includes('book') || q.includes('write') || q.includes('poem') || q.includes('poetry') || q.includes('novel') || q.includes('bibliophile')) {
+        return `Rutu is a passionate **bibliophile**! She loves reading books and writing fiction & poetry. She currently has **1 completed fiction novel draft ready** and has written **30+ poems**! 📚✍️`;
+      }
+      
       if (q.includes('project') || q.includes('build') || q.includes('portfolio')) {
       const projs = portfolioData.projects.map(p => `• **${p.name}** (${p.category}): ${p.desc}`).join('\n');
       return `Here are some of the key projects Rutu has engineered:\n\n${projs}\n\nWhich of these would you like to know more about?`;
@@ -212,6 +216,7 @@ export default function Chatbot() {
 
     Achievements: 5x Hackathon winner, NPTEL Top 5% Elite + Silver, Intercollegiate Debate Champion, Infosys Pragati Mentee.
     Research: 2 published papers (IJARSCT, Scopus-indexed ICETT-2026). 3 ongoing research projects.
+    Hobbies: Passionate bibliophile, loves reading books, and writing fiction and poetry. She has 1 completed fiction novel draft ready and has written 30+ poems.
 
     Answer concisely. Be conversational and warm. Always guide users to email ghatgerutu@gmail.com or check her LinkedIn.`;
 

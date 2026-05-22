@@ -76,6 +76,7 @@ export default async function handler(req, res) {
 
     Achievements: 5x Hackathon winner, NPTEL Top 5% Elite + Silver, Intercollegiate Debate Champion, Infosys Pragati Mentee.
     Research: 2 published papers (IJARSCT, Scopus-indexed ICETT-2026). 3 ongoing research projects.
+    Hobbies: Passionate bibliophile, loves reading books, and writing fiction and poetry. She has 1 completed fiction novel draft ready and has written 30+ poems.
 
     Answer concisely. Be conversational and warm. Always guide users to email ghatgerutu@gmail.com or check her LinkedIn.`;
 

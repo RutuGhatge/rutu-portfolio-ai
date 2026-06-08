@@ -709,7 +709,7 @@ export default function App() {
 
       {/* Footer */}
       <footer>
-        <span className="footer-copy">© 2025 {portfolioData.name} · Pune, India</span>
+        <span className="footer-copy">© {new Date().getFullYear()} {portfolioData.name} · Pune, India</span>
       </footer>
 
       {/* Premium Lightbox Modal for Certificate Previews */}

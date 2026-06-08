@@ -159,7 +159,7 @@ export default function Chatbot() {
     }
 
     if (q.includes('skincare') || q.includes('skin') || q.includes('formulynx') || q.includes('skinbb') || q.includes('skinsage') || q.includes('label') || q.includes('clinic') || q.includes('aqi') || q.includes('weather') || q.includes('techs')) {
-      return `Rutu has worked on **multiple confidential AI and full-stack products** at **Techs & Tomes** across skincare tech and healthcare verticals.\n\nThese include projects under the **SkinBB suite**, **Formulynx.ai**, **SkinSage**, **Label Looker**, and a **Clinic Management System**.\n\n⚠️ *Details are confidential per NDA. For more information, please reach out to Rutu directly at ghatgerutu@gmail.com.*`;
+      return `Rutu has worked on **multiple confidential AI and full-stack products** at **Techs & Tomes (SkinBB)** across skincare tech and healthcare verticals.\n\nThese include projects under the **SkinBB suite**, **Formulynx.ai**, **SkinSage**, **Label Looker**, and a **Clinic Management System**.\n\n⚠️ *Details are confidential per NDA. For more information, please reach out to Rutu directly at ghatgerutu@gmail.com.*`;
     }
 
     if (q.includes('pustakalay') || q.includes('offline') || q.includes('local rag') || q.includes('on-device')) {
@@ -170,7 +170,7 @@ export default function Chatbot() {
       return `One of Rutu's most meaningful recognitions was receiving a **Letter of Recommendation** from her guide at ARDE, DRDO — an honour rarely extended to interns. This reflects the exceptional trust and high-impact contributions she made during her 6-month R&D tenure. 💫`;
     }
 
-    return `Thanks for asking! Rutu is a **BE (AI&DS with DS Hons)** student and developer currently working @ Techs & Tomes, Pune. \n\nI can tell you all about her **DRDO experience**, **Pustakalay Chatbot**, **research papers**, **hackathon wins**, or how to **contact her**! What interests you?`;
+    return `Thanks for asking! Rutu is a **BE (AI&DS with DS Hons)** student and developer currently working @ Techs & Tomes (SkinBB), Pune. \n\nI can tell you all about her **DRDO experience**, **Pustakalay Chatbot**, **research papers**, **hackathon wins**, or how to **contact her**! What interests you?`;
   };
 
   // Google Gemini API direct browser integration
@@ -194,7 +194,7 @@ export default function Chatbot() {
     - HSC (PCM & Bifocal Computer Science, MSBSHSE, Top Performer in Bifocal CS, short films/drama)
     - SSC (Modern High School NCL Campus, MSBSHSE, Board Topper 93.40%, Head Girl & Captain, Right Guard RSP, A Grade Drawing Examinations)
 
-    Current Role: AI & Full-Stack Developer @ Techs & Tomes, Pune (Jun 2025 – Present)
+    Current Role: AI & Full-Stack Developer @ Techs & Tomes (Skin Beyond Borders), Pune (Jun 2025 – Present)
     Previous: Research & Development Intern @ ARDE DRDO, Pune (Nov 2024 – May 2025) — received a prestigious Letter of Recommendation (LOR) from DRDO guide. Worked in a zero-connectivity secure lab (no internet, phones, or storage devices).
 
     Core Stack: Python, PyTorch, LangChain, LangGraph, OpenCV, FastAPI, React.js, YOLO, Kalman Filters, NLP, RAG, MongoDB.
@@ -205,14 +205,14 @@ export default function Chatbot() {
     3. RahiAI (Jul 2025–Present): Voice-first multilingual heritage tour guide (6 Indian languages). Whisper + Groq LLaMA 3.2 70B. Gen AI Hackathon (IIT Bhubaneswar / OdiaGenAI / KIIT).
     4. Pustakalay Chatbot (DRDO, Nov 2024–May 2025): Fully local offline on-device RAG chatbot (LLaMA + DeepSeek) for 500+ classified defense documents. Zero internet/connectivity environment.
     5. DeFake (Mar–Apr 2025): Multiformat deepfake detector. 1st Place (Team FakeNoMore) at Hackgineers'25.
-    6–11. Techs & Tomes Confidential Projects (Jun 2025–Present): Formulynx.ai, SkinSage (RAG chatbot), SkinBB Vision, SkinBB Platform, Label Looker, Clinic Management System — all under NDA, details undisclosed.
+    6–11. Techs & Tomes (SkinBB) Confidential Projects (Jun 2025–Present): Formulynx.ai, SkinSage (RAG chatbot), SkinBB Vision, SkinBB Platform, Label Looker, Clinic Management System — all under NDA, details undisclosed.
     12. 4 Live Defense Projects at DRDO (Nov 2024–May 2025): Confidential. CNN aerial object detection, Kalman Filter + LSTM drone tracking, Edge AI optimization.
     13. SafeSurf AI: Browser extension for real-time phishing detection.
     14. Heart Disease Risk Assessment (Jul–Aug 2024): GUI-based ML risk assessor. CodeClause.
     15. Human Emulated Robotic Hand (Jan–Jun 2024): IoT neuro-prosthetic. Published in IJARSCT. Presented at ICMETET.
     16. ClapSync Home Control (Jan–Mar 2023): Clap-activated smart home automation.
 
-    IMPORTANT: NEVER reveal internal implementation details, tech stacks, or specifics of any Techs & Tomes project. They are confidential under NDA. If asked, politely acknowledge them by name only and direct the user to contact Rutu directly.
+    IMPORTANT: NEVER reveal internal implementation details, tech stacks, or specifics of any Techs & Tomes (SkinBB) project. They are confidential under NDA. If asked, politely acknowledge them by name only and direct the user to contact Rutu directly.
 
     Achievements: 5x Hackathon winner, NPTEL Top 5% Elite + Silver, Intercollegiate Debate Champion, Infosys Pragati Mentee.
     Research: 2 published papers (IJARSCT, Scopus-indexed ICETT-2026). 3 ongoing research projects.

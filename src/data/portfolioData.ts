@@ -92,7 +92,7 @@ export interface PortfolioData {
 export const portfolioData: PortfolioData = {
   name: 'Rutu Ghatge',
   role: 'BE (AI&DS with DS Hons)',
-  tagline: 'Building intelligent systems that bridge research and production — from LLM-powered agents and computer vision pipelines to full-stack AI applications. Currently @ Techs & Tomes, previously @ DRDO.',
+  tagline: 'Building intelligent systems that bridge research and production — from LLM-powered agents and computer vision pipelines to full-stack AI applications. Currently @ Techs & Tomes (SkinBB), previously @ DRDO.',
   location: 'Pune, India',
   email: 'ghatgerutu@gmail.com',
   phone: '+91-9822750477',
@@ -149,7 +149,7 @@ export const portfolioData: PortfolioData = {
     {
       role: 'AI & Full-Stack Developer',
       period: 'Jun 2025 – Present',
-      company: 'Techs & Tomes',
+      company: 'Techs & Tomes (Skin Beyond Borders)',
       location: 'Pune',
       bullets: [
         'Contributed to multiple confidential AI and full-stack products across skincare tech and healthcare verticals — details undisclosed per NDA.',
@@ -249,7 +249,7 @@ export const portfolioData: PortfolioData = {
       id: '06',
       num: '06',
       name: 'Formulynx.ai',
-      desc: 'Confidential AI skincare platform at Techs & Tomes. Details undisclosed.',
+      desc: 'Confidential AI skincare platform at Techs & Tomes (SkinBB). Details undisclosed.',
       stack: ['FastAPI', 'MongoDB', 'Python', 'Generative AI', 'RAG'],
       category: 'Full-Stack AI'
     },
@@ -257,7 +257,7 @@ export const portfolioData: PortfolioData = {
       id: '07',
       num: '07',
       name: 'SkinSage',
-      desc: 'Confidential RAG-based AI chatbot built under the SkinBB suite at Techs & Tomes. Details undisclosed.',
+      desc: 'Confidential RAG-based AI chatbot built under the SkinBB suite at Techs & Tomes (SkinBB). Details undisclosed.',
       stack: ['LangChain', 'RAG', 'Python', 'FastAPI', 'Generative AI'],
       category: 'LLMs & Agents'
     },
@@ -265,7 +265,7 @@ export const portfolioData: PortfolioData = {
       id: '08',
       num: '08',
       name: 'SkinBB Vision',
-      desc: 'Confidential computer vision product under SkinBB at Techs & Tomes. Details undisclosed.',
+      desc: 'Confidential computer vision product under SkinBB at Techs & Tomes (SkinBB). Details undisclosed.',
       stack: ['Computer Vision', 'Python', 'FastAPI'],
       category: 'Full-Stack AI'
     },
@@ -273,7 +273,7 @@ export const portfolioData: PortfolioData = {
       id: '09',
       num: '09',
       name: 'SkinBB Platform',
-      desc: 'Confidential digital platform under SkinBB at Techs & Tomes. Details undisclosed.',
+      desc: 'Confidential digital platform under SkinBB at Techs & Tomes (SkinBB). Details undisclosed.',
       stack: ['React.js', 'FastAPI', 'MongoDB', 'Tailwind CSS'],
       category: 'Full-Stack AI'
     },
@@ -281,7 +281,7 @@ export const portfolioData: PortfolioData = {
       id: '10',
       num: '10',
       name: 'Label Looker',
-      desc: 'Confidential AI tool at Techs & Tomes. Details undisclosed.',
+      desc: 'Confidential AI tool at Techs & Tomes (SkinBB). Details undisclosed.',
       stack: ['Computer Vision', 'OCR', 'Python', 'FastAPI'],
       category: 'Full-Stack AI'
     },
@@ -289,7 +289,7 @@ export const portfolioData: PortfolioData = {
       id: '11',
       num: '11',
       name: 'Clinic Management System',
-      desc: 'Confidential enterprise software at Techs & Tomes. Details undisclosed.',
+      desc: 'Confidential enterprise software at Techs & Tomes (SkinBB). Details undisclosed.',
       stack: ['FastAPI', 'MongoDB', 'Python'],
       category: 'Full-Stack AI'
     },

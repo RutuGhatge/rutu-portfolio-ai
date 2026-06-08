@@ -427,7 +427,7 @@ export const portfolioData: PortfolioData = {
     { title: 'Research & Development AI Intern Certificate', provider: 'DRDO', year: '2025', certImageUrl: '/certs/drdo_cert.jpg', badgeUrl: '/certs/drdo_lor.pdf' },
     { title: 'Mobile Virtual Reality and Artificial Intelligence (Elite + Silver)', provider: 'NPTEL', year: '2024', certImageUrl: '/certs/Mobile Virtual Reality and Artificial Intelligence.jpg' },
     { title: 'Finlatics Business Analyst Experience Program', provider: 'Finlatics', year: '2024', certImageUrl: '/certs/finlatics business analyst.jpg' },
-    { title: 'Advanced AI & Deep Learning Specialization', provider: 'Udemy', year: '2024', certImageUrl: '/certs/udemy_cert.jpg', badgeUrl: '/certs/udemy_cert.pdf' },
+    { title: 'The Complete Full-Stack Web Development Bootcamp', provider: 'Udemy', year: '2024', certImageUrl: '/certs/udemy_cert.jpg', badgeUrl: '/certs/udemy_cert.pdf' },
     { title: 'Google AI Essentials', provider: 'Google', year: '2024', certImageUrl: '/certs/google ai essentials.pdf' },
     { title: 'Introduction to Generative AI Studio', provider: 'Google', year: '2024', certImageUrl: '/certs/google cloud intro to generative ai studio.pdf' },
     { title: 'SQL and Relational Databases', provider: 'IBM', year: '2024', certImageUrl: '/certs/sql and relational databases 101.jpg' },
